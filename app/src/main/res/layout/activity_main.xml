@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.bindingapp.FilmeViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+        <GridLayout
+            android:rowCount="2"
+            android:columnCount="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/textStyle"
+                android:paddingRight="15dp"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:text="Titulo"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+            <TextView
+                style="@style/textStyle"
+                android:id="@+id/textTitulo"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:text="@{viewmodel.titulo}"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+
+            <TextView
+                style="@style/textStyle"
+                android:paddingRight="15dp"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:text="Ano"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+            <TextView
+                style="@style/textStyle"
+                android:id="@+id/textAno"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:text="@{Integer.toString(viewmodel.ano)}"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+
+        </GridLayout>
+
+        <Button
+            android:onClick="@{()->viewmodel.onLike()}"
+            android:text="LIKE"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            style="@style/textStyle"
+            android:text="LIKES"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            style="@style/textStyle"
+            android:id="@+id/textLikes"
+            android:text="@{Integer.toString(viewmodel.likes)}"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            style="@style/textStyle"
+            android:id="@+id/textInteresse"
+            android:text="@{viewmodel.interesse}"
+            android:textAlignment="center"
+            app:changeTextColor="@{viewmodel.likes}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</layout>
